@@ -1,0 +1,257 @@
+{
+  "categories": [
+    {
+      "id": "quran",
+      "name": "Qur'on Duolari",
+      "icon": "book",
+      "color": "#2E7D32",
+      "description": "Qur'on Karimdagi payg'ambar va mo'minlar duolari"
+    },
+    {
+      "id": "prophet",
+      "name": "Payg'ambar Duolari",
+      "icon": "person",
+      "color": "#1565C0",
+      "description": "Muhammad (s.a.v) va boshqa payg'ambarlarning duolari"
+    },
+    {
+      "id": "daily",
+      "name": "Kundalik Duolar",
+      "icon": "today",
+      "color": "#FF8F00",
+      "description": "Har kuni o'qiladigan duolar"
+    },
+    {
+      "id": "special",
+      "name": "Maxsus Duolar",
+      "icon": "star",
+      "color": "#C2185B",
+      "description": "Maxsus holatlar uchun duolar"
+    },
+    {
+      "id": "protection",
+      "name": "Himoya Duolari",
+      "icon": "shield",
+      "color": "#7B1FA2",
+      "description": "Har qanday balo va ofatlardan himoya duolari"
+    },
+    {
+      "id": "health",
+      "name": "Sog'lik Duolari",
+      "icon": "favorite",
+      "color": "#D32F2F",
+      "description": "Kasallik va og'riqlardan tiklanish duolari"
+    },
+    {
+      "id": "rizq",
+      "name": "Rizq Duolari",
+      "icon": "attach_money",
+      "color": "#F57C00",
+      "description": "Rizqning kengayishi va barakali bo'lishi uchun duolar"
+    }
+  ],
+  "duolar": [
+    {
+      "id": "duo_001",
+      "category": "quran",
+      "title": "Oyatul Kursiy",
+      "arabic": "اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+      "transliteration": "Allohu la ilaha illa huwal hayyul qayyum. La ta'khuzuhu sinatuv va la navm. Lahu ma fis-samavati va ma fil-ard. Man zallaziy yashfa'u 'indahu illa biiznih. Ya'lamu ma bayna aydiyhim va ma khalfahum va la yuhiytuna bishay'im-min 'ilmihi illa bima sha'. Vasi'a kursiyyuhus-samavati val-ard. Va la ya'uduhu hifzuhuma va huwal 'aliyul 'aziym.",
+      "translation": {
+        "uz": "Allohdan o'zga hech qanday iloh yo'q. U doim tirik va abadiy turguvchidir. Uni mudroq ham, uyqu ham olmas. Osmonlaru yerdagi barcha narsalar Unikidir. Uning huzurida O'zining iznisiz hech kim shafoat qila olmas. U ularning oldilaridagi narsani ham, ortlaridagi narsani ham bilur. Uning ilmidan hech narsani ihota qila olmaslar, magar O'zi xohlagan narsanigina. Uning Kursisi osmonlaru yerni qamrab olgan. Ularni muhofaza qilish Uni charchatmas. Va U Oliy va Buyukdir.",
+        "en": "Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is [presently] before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great.",
+        "ru": "Аллах - нет божества, кроме Него, Живого, Вечносущего. Ни дремота не овладевает Им, ни сон. Ему принадлежит то, что на небесах, и то, что на земле. Кто заступится перед Ним без Его дозволения? Он знает их будущее и прошлое. Они же не способны объять своим разумом ничего из Его знания, кроме того, что Он пожелает. Его Трон объемлет небеса и землю, и не тяготит Его оберегание их. Он - Возвышенный, Великий.",
+        "ar": "الله لا إله إلا هو الحي القيوم لا تأخذه سنة ولا نوم له ما في السماوات وما في الأرض من ذا الذي يشفع عنده إلا بإذنه يعلم ما بين أيديهم وما خلفهم ولا يحيطون بشيء من علمه إلا بما شاء وسع كرسيه السماوات والأرض ولا يؤوده حفظهما وهو العلي العظيم"
+      },
+      "explanation": {
+        "uz": "Bu oyat Allohning eng buyuk sifatlarini bayon qiladi. Har kecha o'qilganda Alloh o'quvchini shayton va barcha yovuzliklardan himoya qiladi.",
+        "en": "This verse describes the greatest attributes of Allah. When recited every night, Allah protects the reciter from Satan and all evils."
+      },
+      "benefits": [
+        "Har kecha o'qilsa, Alloh uni shayton va barcha yovuzliklardan himoya qiladi",
+        "Uy va do'konlardagi jin va shaytonlarni haydab chiqaradi",
+        "Rizqni kengaytiradi",
+        "Kasallik va ofatlardan saqlaydi"
+      ],
+      "reference": "Baqara surasi, 255-oyat",
+      "times": ["morning", "evening", "before_sleep"],
+      "tags": ["himoya", "rizq", "shifo", "muhim"],
+      "audio": "assets/audio/duolar/ayatul_kursiy.mp3",
+      "duration": "2:15"
+    },
+    {
+      "id": "duo_002",
+      "category": "quran",
+      "title": "Rabbana atina",
+      "arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+      "transliteration": "Rabbana atina fid-dunya hasanatav-va fil akhirati hasanatav-va qina 'azaban-nar",
+      "translation": {
+        "uz": "Parvardigoro, bizga bu dunyoda ham yaxshilik ato qilgin, oxiratda ham yaxshilik ato etgin va bizni do'zax azobidan asragin.",
+        "en": "Our Lord, give us in this world [that which is] good and in the Hereafter [that which is] good and protect us from the punishment of the Fire.",
+        "ru": "Господь наш! Даруй нам в этом мире добро и в Последней жизни добро и защити нас от мучений Огня."
+      },
+      "explanation": {
+        "uz": "Bu duo barcha mo'minlar uchun eng mukammal duodir. Dunyo va oxiratdagi barcha yaxshiliklar shu duoda jamlangan.",
+        "en": "This is the most perfect prayer for all believers. All goodness in this world and the Hereafter is encompassed in this prayer."
+      },
+      "benefits": [
+        "Dunyo va oxiratdagi barcha yaxshiliklar jamlangan",
+        "Har namozdan keyin o'qilishi sunnat",
+        "Allohning rizosi va mag'firatiga sabab bo'ladi"
+      ],
+      "reference": "Baqara surasi, 201-oyat",
+      "times": ["after_prayer", "morning", "evening"],
+      "tags": ["dunya", "oxirat", "mag'firat", "namoz"],
+      "audio": "assets/audio/duolar/rabbana_atina.mp3",
+      "duration": "0:45"
+    },
+    {
+      "id": "duo_003",
+      "category": "prophet",
+      "title": "Kun sayyid al-istig'for",
+      "arabic": "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+      "transliteration": "Allohumma anta robbi la ilaha illa anta, kholaqtani va ana 'abduka, va ana 'ala 'ahdika va va'dika mas-tato'tu. A'uzu bika min sharri ma sona'tu, abu'u laka bi ni'matika 'alayya, va abu'u bizambiy, fag'firliy fa-innahu la yag'firuz-zunuba illa anta.",
+      "translation": {
+        "uz": "Allohim, Sen mening Rabbimsan. Sendan o'zga iloh yo'q. Sen meni yaratding, men Sening qulingman. Men Sening va'dang va ahd-ingda qolishga imkonim boricha harakat qilaman. Qilgan ishimning yomonligidan Sening panohingga qochaman. Menga atagan ne'matingni tan olaman va gunohimni ham tan olaman. Meni mag'firat qil, chunki gunohlarni mag'firat qiluvchi faqat Sensan.",
+        "en": "O Allah, You are my Lord. There is no god but You. You created me and I am Your servant. I abide by Your covenant and promise as much as I can. I seek refuge in You from the evil of what I have done. I acknowledge Your favor upon me and I acknowledge my sin. So forgive me, for indeed no one forgives sins except You."
+      },
+      "explanation": {
+        "uz": "Payg'ambarimiz (s.a.v)ning kuniga eng afzal istig'for duosi. Agar kunda bir marta o'qilsa, Alloh uning barcha gunohlarini kechiradi.",
+        "en": "The best prayer for forgiveness in a day according to our Prophet (PBUH). If recited once a day, Allah will forgive all his sins."
+      },
+      "benefits": [
+        "Kundagi eng afzal istig'for duosi",
+        "Barcha kichik gunohlarni kechiradi",
+        "Allohning rizosi va mag'firatiga olib boradi"
+      ],
+      "reference": "Sahih al-Bukhari 6306",
+      "times": ["morning", "evening"],
+      "tags": ["mag'firat", "gunoh", "poklanish", "muhim"],
+      "audio": "assets/audio/duolar/sayyid_istigfor.mp3",
+      "duration": "1:10"
+    },
+    {
+      "id": "duo_004",
+      "category": "daily",
+      "title": "Tonggi zikr",
+      "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ رَبِّ الْعَالَمِينَ اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَا الْيَوْمِ فَتْحَهُ وَنَصْرَهُ وَنُورَهُ وَبَرَكَتَهُ وَهُدَاهُ وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِيهِ وَشَرِّ مَا بَعْدَهُ",
+      "transliteration": "Asbahna wa asbahal mulku lillahi robbil 'alamin. Allohumma inniy as'aluka khayra hadhal-yaumi fathahu, va nasrahu, va nurahu, va barakatahu, va hudahu. Va a'uzu bika min sharri ma fihi, va sharri ma ba'dahu.",
+      "translation": {
+        "uz": "Biz tong ottirdik va barcha mulk olamlar Robbisi Allohga tegishli bo'ldi. Allohim, Sening huzuringdan bugunning yaxshiligini, uning fathini, g'alabasini, nurini, barakatini va hidoyatini so'rayman. Uning ichidagi va undan keyingi yovuzliklardan panoh tilayman.",
+        "en": "We have reached the morning and at this time all sovereignty belongs to Allah, Lord of the worlds. O Allah, I ask You for the good of this day, its triumphs, its victories, its light, its blessings and its guidance. I seek refuge in You from the evil of this day and the evil that follows it."
+      },
+      "explanation": {
+        "uz": "Har kuni tongda o'qiladigan mukammal duo. Kunning barcha yaxshiliklarini o'z ichiga oladi va barcha yovuzliklardan himoya qiladi.",
+        "en": "The perfect prayer to be recited every morning. It encompasses all the goodness of the day and protects from all evils."
+      },
+      "benefits": [
+        "Kunning barcha yaxshiliklarini jamlaydi",
+        "Barcha ofat va musibatlardan himoya qiladi",
+        "Kun davomida Allohning himoyasi ostida bo'lish",
+        "Islarning qabul bo'lishiga sabab"
+      ],
+      "reference": "Abu Dovud 5088",
+      "times": ["morning"],
+      "tags": ["tong", "himoya", "baraka", "kundalik"],
+      "duration": "1:00"
+    },
+    {
+      "id": "duo_005",
+      "category": "protection",
+      "title": "Qalbiy himoya duosi",
+      "arabic": "يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ",
+      "transliteration": "Ya muqallibal-qulubi thabbit qalbi 'ala dinika",
+      "translation": {
+        "uz": "Ey qalblarni aylantiruvchi Zot, qalbimni dininda mustahkam qil.",
+        "en": "O Turner of the hearts, make my heart firm upon Your religion."
+      },
+      "explanation": {
+        "uz": "Qalbning islom dinida mustahkam bo'lishi uchun ajoyib duo. Payg'ambarimiz (s.a.v) ko'p marotaba bu duoni o'qiganlar.",
+        "en": "Excellent prayer for the heart to remain firm in Islam. Our Prophet (PBUH) recited this prayer many times."
+      },
+      "benefits": [
+        "Qalbni islom dinida mustahkam qiladi",
+        "Fitna va shubhalardan saqlaydi",
+        "Iymonning barqaror bo'lishiga sabab"
+      ],
+      "reference": "Tirmiziy 3522",
+      "times": ["morning", "evening", "after_prayer"],
+      "tags": ["qalb", "iymon", "mustahkamlik", "himoya"],
+      "duration": "0:20"
+    },
+    {
+      "id": "duo_006",
+      "category": "health",
+      "title": "Kasallikdan tiklanish duosi",
+      "arabic": "اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَاسَ اشْفِهِ وَأَنْتَ الشَّافِي لَا شِفَاءَ إِلَّا شِفَاؤُكَ شِفَاءً لَا يُغَادِرُ سَقَمًا",
+      "transliteration": "Allohumma robban-nasi, azhibil-ba'sa, ishfihi va antash-shafi, la shifa'a illa shifa'uka, shifa'an la yughadiru saqama",
+      "translation": {
+        "uz": "Allohim, ey insonlar Robbisi, bu og'riqni ketkiz, unga shifo ata qil. Shifo atovchi faqat Sensan. Sening shifoingdan boshqa shifo yo'q. Bunday shifo ata qilki, kasallikdan asar ham qoldirmasin.",
+        "en": "O Allah, Lord of mankind, remove this suffering and heal him, for You are the Healer and there is no healing except Your healing, with a healing that leaves no illness remaining."
+      },
+      "explanation": {
+        "uz": "Kasallik paytida o'qiladigan ajoyib shifo duosi. Payg'ambarimiz (s.a.v) bemorlarga bu duoni o'qib dam solishgan.",
+        "en": "Excellent healing prayer to be recited during illness. Our Prophet (PBUH) used to recite this prayer for the sick."
+      },
+      "benefits": [
+        "Har qanday kasallik uchun shifo duosi",
+        "Allohning izni bilan tezda sog'ayish",
+        "Og'riq va alamni yengillashtiradi"
+      ],
+      "reference": "Sahih al-Bukhari 5743",
+      "times": ["when_sick", "visiting_sick"],
+      "tags": ["shifo", "kasallik", "sog'lik", "bemor"],
+      "duration": "0:35"
+    },
+    {
+      "id": "duo_007",
+      "category": "rizq",
+      "title": "Rizq kengayishi duosi",
+      "arabic": "اللَّهُمَّ أَكْثِرْ مَالِي وَوَلَدِي وَبَارِكْ لِي فِيمَا أَعْطَيْتَنِي وَأَطِلْ حَيَاتِي عَلَى طَاعَتِكَ وَأَحْسِنْ عَمَلِي وَاغْفِرْ لِي",
+      "transliteration": "Allohumma akthir maliy va valadiy, va barik liy fima a'taytaniy, va atil hayatiy 'ala to'atika, va ahsin 'amaliy, vaghfir liy",
+      "translation": {
+        "uz": "Allohim, molim va farzandlarimni ko'paytirgin, menga atagan ne'matlaringda baraka qilgin, hayotimni Sening itoatida uzun qilgin, amalimni go'zal qilgin va meni mag'firat qilgin.",
+        "en": "O Allah, increase my wealth and my children, bless me in what You have given me, prolong my life in obedience to You, make my deeds good and forgive me."
+      },
+      "explanation": {
+        "uz": "Rizqning kengayishi va barakali bo'lishi uchin duo. Mol, farzand va barcha ne'matlarning ko'payishi va barakali bo'lishi.",
+        "en": "Prayer for the increase and blessing of sustenance. For increase of wealth, children and all blessings."
+      },
+      "benefits": [
+        "Rizqni kengaytiradi",
+        "Mol va farzandlarda baraka yaratadi",
+        "Amallarning yaxshilanishiga sabab",
+        "Hayotning uzun va foydali bo'lishi"
+      ],
+      "reference": "Sahih al-Bukhari 6384",
+      "times": ["morning", "after_prayer"],
+      "tags": ["rizq", "baraka", "mol", "farzand"],
+      "duration": "0:40"
+    },
+    {
+      "id": "duo_008",
+      "category": "special",
+      "title": "Tavba duosi",
+      "arabic": "اللَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا وَلَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ فَاغْفِرْ لِي مَغْفِرَةً مِنْ عِنْدِكَ وَارْحَمْنِي إِنَّكَ أَنْتَ الْغَفُورُ الرَّحِيمُ",
+      "transliteration": "Allohumma inniy zolamtu nafsi zulman kathiran, wa la yagfiruz-zunuba illa anta, fagfir liy magfiratan min 'indika, varhamniy, innaka antal-g'afurur-rohim",
+      "translation": {
+        "uz": "Allohim, men o'z jonimga ko'p zulm qildim. Gunohlarni faqat Sen kechishing mumkin. Menga O'z huzuringdan mag'firat ato qilgin va menga rahm qilgin. Albatta, Sen kechiruvchi va rahmlisankim.",
+        "en": "O Allah, I have wronged myself greatly and no one forgives sins except You. So grant me forgiveness from You and have mercy on me. Indeed, You are the Forgiving, the Merciful."
+      },
+      "explanation": {
+        "uz": "Gunohlar uchun chuqur tavba duosi. Odam o'zining barcha gunohlarini tan olib, Allohdan mag'firat so'raydi.",
+        "en": "Deep repentance prayer for sins. The person acknowledges all his sins and seeks forgiveness from Allah."
+      },
+      "benefits": [
+        "Barcha gunohlarni kechirish",
+        "Qalbdagi og'irlikni yengillashtirish",
+        "Allohning rahmatiga erishish",
+        "Ruhiy poklanish"
+      ],
+      "reference": "Sahih al-Bukhari 834",
+      "times": ["night", "after_sin"],
+      "tags": ["tavba", "mag'firat", "gunoh", "poklanish"],
+      "duration": "0:30"
+    }
+  ]
+}
