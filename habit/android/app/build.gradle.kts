@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.habit"
+    namespace = "com.habit.habit"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.habit"
+        applicationId = "com.habit.habit"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -29,7 +29,12 @@ android {
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
-
+    dependencies {
+         // ... existing dependencies
+        implementation platform('com.google.firebase:firebase-bom:32.7.0')
+        implementation 'com.google.firebase:firebase-auth'
+        implementation 'com.google.firebase:firebase-firestore'
+    }
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.

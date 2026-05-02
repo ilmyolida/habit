@@ -9,7 +9,26 @@ import 'bloc/settings_bloc.dart';
 import 'utils/database_helper.dart';
 import 'utils/notification_helper.dart';
 import 'screens/dashboard_screen.dart';
+// Add to main() before runApp
+import 'package:firebase_core/firebase_core.dart';
 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize Firebase
+  await Firebase.initializeApp();
+  
+  // ... existing code
+}
+
+// Add AuthBloc to MultiBlocProvider
+MultiBlocProvider(
+  providers: [
+    // ... existing providers
+    BlocProvider(create: (_) => AuthBloc()..add(CheckAuthStatus())),
+  ],
+  child: MyApp(),
+)
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
