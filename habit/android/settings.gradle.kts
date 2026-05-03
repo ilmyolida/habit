@@ -8,19 +8,18 @@ fun properties(file: File): Properties {
     }
 }
 
+val flutterSdkPath = requireNotNull(properties(file("local.properties")).getProperty("flutter.sdk")) {
+    "flutter.sdk not set in local.properties"
+}
+
 pluginManagement {
     repositories {
         google()
         mavenCentral()
         gradlePluginPortal()
     }
+    includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
 }
-
-val flutterSdkPath = requireNotNull(properties(file("local.properties")).getProperty("flutter.sdk")) {
-    "flutter.sdk not set in local.properties"
-}
-
-includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
 
 plugins {
     id("dev.flutter.flutter-plugin-loader") version "1.0.0"

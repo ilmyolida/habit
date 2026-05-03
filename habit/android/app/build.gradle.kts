@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -6,15 +9,15 @@ plugins {
 }
 
 // 🔥 QO‘SHILDI: JKS kalitini o'qish
-def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file('key.properties')
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("key.properties")
 if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 
 android {
     namespace = "com.habit.habit"
-    compileSdk = 34  // 🔥 TUZATILDI: flutter.compileSdkVersion o'rniga
+    compileSdk = 36  // 🔥 TUZATILDI: flutter.compileSdkVersion o'rniga
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -29,7 +32,7 @@ android {
     defaultConfig {
         applicationId = "com.habit.habit"
         minSdk = flutter.minSdkVersion  // 🔥 TUZATILDI: 21 dan past bo'lmasin
-        targetSdk = 34
+        targetSdk = 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
         multiDexEnabled = true  // 🔥 QO‘SHILDI: MultiDex uchun
@@ -37,36 +40,34 @@ android {
 
     // 🔥 QO‘SHILDI: Signing konfiguratsiyasi
     signingConfigs {
-        debug {
-            storeFile file(System.getProperty("user.home") + "/.android/debug.keystore")
-            storePassword "android"
-            keyAlias "androiddebugkey"
-            keyPassword "android"
+        create("debug") {
+            storeFile = file(System.getProperty("user.home") + "/.android/debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
         }
-        release {
+        create("release") {
             if (keystorePropertiesFile.exists()) {
-                keyAlias keystoreProperties['keyAlias']
-                keyPassword keystoreProperties['keyPassword']
-                storeFile file(keystoreProperties['storeFile'])
-                storePassword keystoreProperties['storePassword']
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+                storeFile = file(keystoreProperties["storeFile"] as String)
+                storePassword = keystoreProperties["storePassword"] as String
             } else {
-                // 🔥 MUHIM: Agar JKS bo'lmasa, debug bilan sign qiladi
-                signingConfig = signingConfigs.debug
+                signingConfig = signingConfigs.getByName("debug")
             }
         }
     }
 
     buildTypes {
-        debug {
-            signingConfig = signingConfigs.debug
-            debuggable = true
-            minifyEnabled = false
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("debug")
+            isDebuggable = true
+            isMinifyEnabled = false
         }
-        release {
-            // 🔥 TUZATILDI: Release uchun release signing config
-            signingConfig = signingConfigs.release
-            minifyEnabled = true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 }
@@ -78,20 +79,12 @@ flutter {
 
 // 🔥 TUZATILDI: Dependencies to'g'ri joyga qo'yildi
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    
-    // Import the Firebase BoM
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0")
     implementation(platform("com.google.firebase:firebase-bom:34.12.0"))
-    
-    // Firebase services
-    implementation 'com.google.firebase:firebase-auth'
-    implementation 'com.google.firebase:firebase-firestore'
-    implementation 'com.google.firebase:firebase-messaging'
-    implementation 'com.google.firebase:firebase-storage'
-    
-    // 🔥 QO‘SHILDI: MultiDex support
-    implementation 'androidx.multidex:multidex:2.0.1'
-    
-    // 🔥 QO‘SHILDI: Biometric/Fingerprint support
-    implementation 'androidx.biometric:biometric:1.1.0'
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-messaging")
+    implementation("com.google.firebase:firebase-storage")
+    implementation("androidx.multidex:multidex:2.0.1")
+    implementation("androidx.biometric:biometric:1.1.0")
 }
