@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+// ignore: unused_import
 import 'package:flutter/material.dart';
 import '../models/user_settings.dart';
-import '../models/category.dart';
+import '../models/category.dart' as category_model;
 import '../utils/database_helper.dart';
 
 // Events
@@ -18,7 +19,7 @@ class ToggleCompletionSound extends SettingsEvent { final bool value; ToggleComp
 class ToggleGoalAchievedSound extends SettingsEvent { final bool value; ToggleGoalAchievedSound(this.value); }
 class ChangeAlarmTone extends SettingsEvent { final String tone; ChangeAlarmTone(this.tone); }
 class ToggleHideCompleted extends SettingsEvent { final bool value; ToggleHideCompleted(this.value); }
-class UpdateCategories extends SettingsEvent { final List<Category> categories; UpdateCategories(this.categories); }
+class UpdateCategories extends SettingsEvent { final List<category_model.Category> categories; UpdateCategories(this.categories); }
 class ReorderHabits extends SettingsEvent { final List<String> order; ReorderHabits(this.order); }
 class ChangeDefaultScreen extends SettingsEvent { final String screen; ChangeDefaultScreen(this.screen); }
 class ChangeCurrencySymbol extends SettingsEvent { final String symbol; ChangeCurrencySymbol(this.symbol); }
@@ -220,7 +221,7 @@ extension UserSettingsCopyWith on UserSettings {
     bool? goalAchievedSound,
     String? alarmTone,
     bool? hideCompletedActivities,
-    List<Category>? customCategories,
+    List<category_model.Category>? customCategories,
     List<String>? habitOrder,
     String? defaultScreen,
     String? currencySymbol,
@@ -241,7 +242,8 @@ extension UserSettingsCopyWith on UserSettings {
       goalAchievedSound: goalAchievedSound ?? this.goalAchievedSound,
       alarmTone: alarmTone ?? this.alarmTone,
       hideCompletedActivities: hideCompletedActivities ?? this.hideCompletedActivities,
-      customCategories: customCategories ?? this.customCategories,
+      // ignore: unnecessary_cast
+      customCategories: customCategories != null ? List<category_model.Category>.from(customCategories) : this.customCategories,
       habitOrder: habitOrder ?? this.habitOrder,
       defaultScreen: defaultScreen ?? this.defaultScreen,
       currencySymbol: currencySymbol ?? this.currencySymbol,

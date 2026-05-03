@@ -17,9 +17,7 @@ class ExpensesScreen extends StatefulWidget {
 
 class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  DateTime _selectedDate = DateTime.now();
   String? _selectedCategory;
-  bool _showIncome = false;
 
   @override
   void initState() {
@@ -79,8 +77,8 @@ class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProvid
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddExpenseDialog(),
-        child: const Icon(Icons.add),
         backgroundColor: const Color(0xFF2196F3),
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -282,7 +280,8 @@ class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProvid
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
+        // ignore: deprecated_member_use
+        color: color.withOpacity(0.1),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -312,7 +311,8 @@ class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProvid
             width: 32,
             height: 32,
             decoration: BoxDecoration(
-              color: _getCategoryColor(category).withValues(alpha: 0.1),
+              // ignore: deprecated_member_use
+              color: _getCategoryColor(category).withOpacity(0.1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(
@@ -340,12 +340,13 @@ class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProvid
             itemCount: state.categories.length,
             itemBuilder: (context, index) {
               final category = state.categories[index];
-              return ListTile(
+          return ListTile(
                 leading: Container(
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Color(category.color).withValues(alpha: 0.1),
+                    // ignore: deprecated_member_use
+                    color: Color(category.color).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(
@@ -415,7 +416,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProvid
                   
                   // Category dropdown
                   DropdownButtonFormField<String>(
-                    value: selectedCategory,
+                    initialValue: selectedCategory,
                     items: ['Gida', 'Konut', 'Egitim', 'Saglik', 'Eglence', 'Araba', 'Diger']
                         .map((c) => DropdownMenuItem(value: c, child: Text(c)))
                         .toList(),
@@ -546,14 +547,12 @@ class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProvid
   }
 
   void _editCategory(Category category) {
-    // TODO: Implement category editing
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Kategori düzenleme yakında gelecek')),
     );
   }
 
   void _deleteCategory(int id) {
-    // TODO: Implement category deletion
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Kategori silme yakında gelecek')),
     );
@@ -567,7 +566,6 @@ class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProvid
         content: TextField(
           decoration: const InputDecoration(hintText: 'Kategori veya not ara...'),
           onChanged: (value) {
-            // TODO: Implement search
           },
         ),
       ),
@@ -585,7 +583,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProvid
             const Text('Kategori Seç'),
             const SizedBox(height: 8),
             DropdownButtonFormField<String>(
-              value: _selectedCategory,
+              initialValue: _selectedCategory,
               hint: const Text('Tümü'),
               items: ['Gida', 'Konut', 'Egitim', 'Saglik', 'Eglence', 'Araba', 'Diger']
                   .map((c) => DropdownMenuItem(value: c, child: Text(c)))

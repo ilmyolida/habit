@@ -1,11 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit/screens/mood_customize_screen.dart' show MoodCustomizeScreen;
+import 'package:habit/screens/mood_customize_screen.dart';
+import 'package:habit/screens/mood_tags_screen.dart';
 import '../bloc/mood_bloc.dart';
 import '../models/mood.dart';
+import 'mood_customize_screen.dart' show MoodCustomizeScreen;
 import '../widgets/mood_selector.dart';
 import '../widgets/activity_chips.dart';
-import 'mood_tags_screen.dart';
-import 'mood_customize_screen.dart';
 
 class MoodTrackerScreen extends StatefulWidget {
   const MoodTrackerScreen({super.key});
@@ -19,35 +22,28 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
   List<String> _selectedActivities = [];
   List<String> _selectedTags = [];
   final TextEditingController _noteController = TextEditingController();
-  late final DateTime _selectedDate;
+  final DateTime _selectedDate = DateTime.now();
 
   @override
   void initState() {
     super.initState();
-    _selectedDate = DateTime.now();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        context.read<MoodBloc>().add(LoadMoodByDate(_selectedDate));
-      }
-    });
+    context.read<MoodBloc>().add(LoadMoodByDate(_selectedDate));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(DateFormat('dd MMMM yyyy, EEEE', 'tr').format(_selectedDate)),
+        title: Text(
+          DateFormat('dd MMMM yyyy, EEEE', 'tr').format(_selectedDate),
+        ),
         centerTitle: true,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.check),
-            onPressed: _saveMood,
-          ),
+          IconButton(icon: const Icon(Icons.check), onPressed: _saveMood),
         ],
       ),
       body: BlocListener<MoodBloc, MoodState>(
         listener: (context, state) {
-          if (!mounted) return;
           if (state is MoodLoaded && state.todayMood != null) {
             setState(() {
               _selectedMood = state.todayMood!.mood;
@@ -57,12 +53,10 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
             });
           }
           if (state is MoodSaved) {
-            if (mounted) {
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Ruh haliniz kaydedildi')),
-              );
-            }
+            Navigator.pop(context);
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Ruh haliniz kaydedildi')),
+            );
           }
         },
         child: SingleChildScrollView(
@@ -77,7 +71,8 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
               const SizedBox(height: 24),
               ActivityChips(
                 initialSelected: _selectedActivities,
-                onActivitiesChanged: (activities) => setState(() => _selectedActivities = activities),
+                onActivitiesChanged: (activities) =>
+                    setState(() => _selectedActivities = activities),
               ),
               const SizedBox(height: 24),
               const Text(
@@ -89,7 +84,8 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                 controller: _noteController,
                 maxLines: 3,
                 decoration: InputDecoration(
-                  hintText: 'Ruh halinizle ilgili düşüncelerinizi veya detayları yazın...',
+                  hintText:
+                      'Ruh halinizle ilgili düşüncelerinizi veya detayları yazın...',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide(color: Colors.grey[300]!),
@@ -103,7 +99,7 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF2196F3).withOpacity(0.1),
+                  color: const Color(0xFF2196F3).withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Center(
@@ -124,7 +120,9 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                       onPressed: () => _navigateToTags(),
                       icon: const Icon(Icons.label),
                       label: const Text('Etiketler'),
-                      style: OutlinedButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 12)),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -133,7 +131,9 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                       onPressed: () => _showMoodCustomize(),
                       icon: const Icon(Icons.settings),
                       label: const Text('Özelleştir'),
-                      style: OutlinedButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 12)),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      ),
                     ),
                   ),
                 ],
@@ -164,12 +164,19 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
   }
 
   void _navigateToTags() {
-    Navigator.push(context, MaterialPageRoute(builder: (_) => const MoodTagsScreen())).then((_) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const MoodTagsScreen()),
+    ).then((_) {
+      // ignore: use_build_context_synchronously
       context.read<MoodBloc>().add(LoadMoodTags());
     });
   }
 
   void _showMoodCustomize() {
-    Navigator.push(context, MaterialPageRoute(builder: (_) => const MoodCustomizeScreen()));
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const MoodCustomizeScreen()),
+    );
   }
 }

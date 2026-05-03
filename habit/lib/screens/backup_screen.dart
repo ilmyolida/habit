@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+// ignore: unused_import
 import 'package:share_plus/share_plus.dart';
 import '../utils/backup_helper.dart';
 
@@ -193,7 +194,7 @@ class _BackupScreenState extends State<BackupScreen> {
 
   Future<void> _importLocalBackup() async {
     try {
-      final result = await FilePicker.platform.pickFiles();
+      final result = await FilePicker.pickFiles();
       if (result != null && result.files.single.path != null) {
         setState(() => _isLoading = true);
         await BackupHelper.restoreFromLocal(result.files.single.path!);

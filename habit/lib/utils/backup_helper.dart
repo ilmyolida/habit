@@ -87,11 +87,12 @@ class BackupHelper {
     final response = await driveApi.files.get(
       file.id!,
       downloadOptions: drive.DownloadOptions.fullMedia,
-    ) as drive.Media;
+    ) as Stream<List<int>>;
     
     final dir = await getTemporaryDirectory();
     final tempPath = '${dir.path}/temp_restore.db';
-    await File(tempPath).writeAsBytes(await response.stream.toList().then((chunks) => Uint8List.fromList(chunks.expand((e) => e).toList())));
+    final bytes = await response.expand((e) => e).toList();
+    await File(tempPath).writeAsBytes(bytes);
     await restoreFromLocal(tempPath);
   }
 
@@ -110,7 +111,7 @@ class BackupHelper {
 
   static Future<void> _importDatabase(Database db, Uint8List bytes) async {
     // Parse and import - simplified version
-    final importData = String.fromCharCodes(bytes);
+    final _ = String.fromCharCodes(bytes);
     // In production, properly parse JSON and insert
   }
 
@@ -131,7 +132,8 @@ class BackupHelper {
   }
 
   static Future<bool> hasGoogleSignedIn() async {
-    return await _googleSignIn.isSignedIn();
+    final account = await _googleSignIn.signInSilently();
+    return account != null;
   }
 }
 

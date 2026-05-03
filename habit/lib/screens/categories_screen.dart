@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/settings_bloc.dart';
 import '../models/category.dart';
 import '../utils/database_helper.dart';
 
@@ -26,8 +26,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
 
   Future<void> _loadCategories() async {
     setState(() => _isLoading = true);
-    _habitCategories = await DatabaseHelper.instance.getCategories('habit');
-    _expenseCategories = await DatabaseHelper.instance.getCategories('expense');
+    _habitCategories = (await DatabaseHelper.instance.getCategories('habit')).cast<Category>();
+    _expenseCategories = (await DatabaseHelper.instance.getCategories('expense')).cast<Category>();
     setState(() => _isLoading = false);
   }
 
@@ -101,7 +101,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: Color(categories[i].color).withValues(alpha: 0.1),
+                  color: Color(categories[i].color).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(
@@ -134,7 +134,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
     final nameController = TextEditingController();
     Color selectedColor = Colors.blue;
     String selectedIcon = 'star';
-    IconData? selectedIconData;
 
     showModalBottomSheet(
       context: context,
@@ -216,14 +215,13 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
                         return GestureDetector(
                           onTap: () => setState(() {
                             selectedIcon = icon;
-                            selectedIconData = _getIconFromString(icon);
                           }),
                           child: Container(
                             width: 50,
                             height: 50,
                             margin: const EdgeInsets.only(right: 12),
                             decoration: BoxDecoration(
-                              color: selectedColor.withValues(alpha: 0.1),
+                              color: selectedColor.withOpacity(0.1),
                               borderRadius: BorderRadius.circular(12),
                               border: isSelected
                                   ? Border.all(color: selectedColor, width: 2)

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/settings_bloc.dart';
-import '../models/user_settings.dart';
 import 'categories_screen.dart';
 import 'habit_order_screen.dart';
 import 'mood_customize_screen.dart';
@@ -30,7 +29,7 @@ class SettingsScreen extends StatelessWidget {
                 _buildNavigationTile(
                   context,
                   'Tema Rengi',
-                  () => _showThemeColorPicker(context, state),
+                  onTap: () => _showThemeColorPicker(context, state),
                 ),
                 
                 _buildSectionHeader('GENEL'),

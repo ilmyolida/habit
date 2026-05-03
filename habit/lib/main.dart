@@ -48,10 +48,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => HabitBloc()..add(const LoadHabits())),
-        BlocProvider(create: (_) => MoodBloc()..add(const LoadMoods())),
-        BlocProvider(create: (_) => ExpenseBloc()..add(const LoadExpenses())),
-        BlocProvider(create: (_) => SettingsBloc()..add(const LoadSettings())),
+        BlocProvider(create: (_) => HabitBloc()..add(LoadHabits())),
+        BlocProvider(create: (_) => MoodBloc()..add(LoadMoods())),
+        BlocProvider(create: (_) => ExpenseBloc()..add(LoadExpenses())),
+        BlocProvider(create: (_) => SettingsBloc()..add(LoadSettings())),
         BlocProvider(create: (_) => AuthBloc()..add(CheckAuthStatus())),
       ],
       child: MaterialApp(
