@@ -64,7 +64,7 @@ dependencies:
   just_audio: ^0.10.5
   
   # Localization
-  easy_localization: ^3.0.2
+  easy_localization: ^3.0.8
   
   # In App Purchase
   in_app_purchase: ^3.1.7
