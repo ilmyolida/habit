@@ -20,7 +20,7 @@ pluginManagement {
 
 plugins {
     id("dev.flutter.flutter-plugin-loader") version "1.0.0"
-    id("com.android.application") version "7.3.0" apply false  // 🔥 TUZATILDI: 8.11.1 -> 7.3.0 (Flutter bilan mos)
+    id("com.android.application") version "8.1.1" apply false  // 🔥 TUZATILDI: Flutter 3.41.9 minimum version
     // START: FlutterFire Configuration
     id("com.google.gms.google-services") version "4.3.15" apply false
     // END: FlutterFire Configuration
