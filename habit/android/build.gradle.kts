@@ -1,3 +1,13 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+plugins {
+    id("com.android.application") version "7.3.0" apply false
+    kotlin("android") version "1.9.0" apply false
+    
+    // Add the dependency for the Google services Gradle plugin
+    id("com.google.gms.google-services") version "4.4.4" apply false
+}
+
 allprojects {
     repositories {
         google()
@@ -5,26 +15,27 @@ allprojects {
     }
 }
 
-val newBuildDir: Directory =
-    rootProject.layout.buildDirectory
-        .dir("../../build")
-        .get()
+// 🔥 TUZATILDI: build directory konfiguratsiyasi
+val newBuildDir: Directory = rootProject.layout.buildDirectory
+    .dir("../../build")
+    .get()
 rootProject.layout.buildDirectory.value(newBuildDir)
 
 subprojects {
     val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
+
+// 🔥 TUZATILDI: evaluationDependsOn to'g'rilandi
 subprojects {
-    project.evaluationDependsOn(":app")
+    afterEvaluate {
+        if (project.name != "app") {
+            project.evaluationDependsOn(":app")
+        }
+    }
 }
 
+// 🔥 TUZATILDI: clean task to'g'rilandi
 tasks.register<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
-}
-buildscript {
-    dependencies {
-        // ... existing
-        classpath 'com.google.gms:google-services:4.4.0'
-    }
 }

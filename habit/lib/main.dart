@@ -6,11 +6,15 @@ import 'bloc/habit_bloc.dart';
 import 'bloc/mood_bloc.dart';
 import 'bloc/expense_bloc.dart';
 import 'bloc/settings_bloc.dart';
+import 'bloc/auth_bloc.dart';
 import 'utils/database_helper.dart';
 import 'utils/notification_helper.dart';
 import 'screens/dashboard_screen.dart';
-// Add to main() before runApp
+import 'firebase/firebase_service.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,28 +22,11 @@ void main() async {
   // Initialize Firebase
   await Firebase.initializeApp();
   
-  // ... existing code
-}
-
-// Add AuthBloc to MultiBlocProvider
-MultiBlocProvider(
-  providers: [
-    // ... existing providers
-    BlocProvider(create: (_) => AuthBloc()..add(CheckAuthStatus())),
-  ],
-  child: MyApp(),
-)
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  
   // Initialize database
   await DatabaseHelper.instance.database;
   
   // Initialize notifications
-  await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
+  // await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
   
   // Initialize localization
   await EasyLocalization.ensureInitialized();
@@ -70,6 +57,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => MoodBloc()..add(const LoadMoods())),
         BlocProvider(create: (_) => ExpenseBloc()..add(const LoadExpenses())),
         BlocProvider(create: (_) => SettingsBloc()..add(const LoadSettings())),
+        BlocProvider(create: (_) => AuthBloc()..add(CheckAuthStatus())),
       ],
       child: MaterialApp(
         localizationsDelegates: context.localizationDelegates,
@@ -85,19 +73,6 @@ class MyApp extends StatelessWidget {
             surface: Colors.white,
           ),
           scaffoldBackgroundColor: Colors.white,
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.white,
-            elevation: 0,
-            centerTitle: false,
-            iconTheme: IconThemeData(color: Colors.black87),
-            titleTextStyle: TextStyle(
-              color: Colors.black87,
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-              fontFamily: 'Inter',
-            ),
-          ),
-          fontFamily: 'Inter',
           useMaterial3: true,
         ),
         home: const DashboardScreen(),

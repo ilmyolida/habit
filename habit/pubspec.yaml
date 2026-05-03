@@ -75,6 +75,8 @@ dependencies:
   firebase_auth: ^6.4.0
   cloud_firestore: ^6.3.0
   firebase_storage: ^13.3.0
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.7
   
 dev_dependencies:
   flutter_test:
@@ -101,6 +103,21 @@ flutter_launcher_icons:
     generate: true
     image_path: "assets/images/icon.jpg"
 
+flutter_native_splash:
+  color: "#2196F3"
+  image: assets/images/splash_logo.png
+  android: true
+  ios: true
+  android_gravity: center
+  ios_content_mode: center
+  branding: assets/images/branding.png
+  
+  # Android 12+ uchun
+  android_12:
+    color: "#2196F3"
+    image: assets/images/splash_logo.png
+    branding: assets/images/branding.png
+
 # The following section is specific to Flutter packages.
 
 flutter:
@@ -120,6 +137,7 @@ flutter:
     - assets/translations/
     - assets/icon_foreground.jpg
     - assets/icon.jpg
+    - assets/app_icon.jpg
   fonts:
     - family: PlusJakartaSans
       fonts:

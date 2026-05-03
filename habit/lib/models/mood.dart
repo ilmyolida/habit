@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
+
 enum MoodLevel {
-  terrible('Berbat', 0, Color(0xFFE53935)),
-  bad('Kotu', 1, Color(0xFFFF7043)),
-  neutral('Notr', 2, Color(0xFFFFA726)),
-  good('Iyi', 3, Color(0xFF66BB6A)),
-  great('Harika', 4, Color(0xFF26A69A));
+  terrible('Berbat', 0, Colors.red),
+  bad('Kotu', 1, Colors.orange),
+  neutral('Notr', 2, Colors.amber),
+  good('Iyi', 3, Colors.green),
+  great('Harika', 4, Colors.teal);
 
   final String label;
   final int value;

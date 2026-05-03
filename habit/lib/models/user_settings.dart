@@ -1,29 +1,37 @@
 import 'package:flutter/material.dart';
 
-class MoodCustomization {
+class Category {
+  final int? id;
   final String name;
-  bool isEnabled;
-  Color color;
+  final String icon;
+  final int color;
+  final String type;
 
-  MoodCustomization({
+  Category({
+    this.id,
     required this.name,
-    required this.isEnabled,
+    required this.icon,
     required this.color,
+    required this.type,
   });
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'name': name,
-      'isEnabled': isEnabled ? 1 : 0,
-      'color': color.value,
+      'icon': icon,
+      'color': color,
+      'type': type,
     };
   }
 
-  factory MoodCustomization.fromMap(Map<String, dynamic> map) {
-    return MoodCustomization(
+  factory Category.fromMap(Map<String, dynamic> map) {
+    return Category(
+      id: map['id'],
       name: map['name'],
-      isEnabled: map['isEnabled'] == 1,
-      color: Color(map['color']),
+      icon: map['icon'],
+      color: map['color'],
+      type: map['type'],
     );
   }
 }
@@ -33,7 +41,7 @@ class UserSettings {
   int themeColor;
   bool passwordLock;
   String language;
-  int firstDayOfWeek; // 0 = Sunday, 1 = Monday
+  int firstDayOfWeek;
   bool use24HourFormat;
   bool vibrateOnTap;
   bool completionSound;
@@ -42,7 +50,7 @@ class UserSettings {
   bool hideCompletedActivities;
   List<Category> customCategories;
   List<String> habitOrder;
-  String defaultScreen; // 'Bugun', 'Genel Bakis'
+  String defaultScreen;
   String currencySymbol;
   double usdToUzs;
   bool autoBackup;
@@ -121,19 +129,21 @@ class UserSettings {
   }
 
   static String _encodeCategories(List<Category> categories) {
+    if (categories.isEmpty) return '';
     return categories.map((c) => '${c.name}|${c.icon}|${c.color}|${c.type}').join(';');
   }
 
   static List<Category> _decodeCategories(String data) {
     if (data.isEmpty) return [];
     return data.split(';').map((e) {
-      var parts = e.split('|');
+      final parts = e.split('|');
+      if (parts.length < 4) return null;
       return Category(
         name: parts[0],
         icon: parts[1],
         color: int.parse(parts[2]),
         type: parts[3],
       );
-    }).toList();
+    }).whereType<Category>().toList();
   }
 }

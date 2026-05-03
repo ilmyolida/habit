@@ -1,13 +1,20 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+    id("com.google.gms.google-services")  // 🔥 QO‘SHILDI: Firebase uchun
+}
+
+// 🔥 QO‘SHILDI: JKS kalitini o'qish
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
 android {
     namespace = "com.habit.habit"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 34  // 🔥 TUZATILDI: flutter.compileSdkVersion o'rniga
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -20,30 +27,71 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.habit.habit"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        minSdk = 21  // 🔥 TUZATILDI: 21 dan past bo'lmasin
+        targetSdk = 34
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        multiDexEnabled = true  // 🔥 QO‘SHILDI: MultiDex uchun
     }
-    dependencies {
-         // ... existing dependencies
-        implementation platform('com.google.firebase:firebase-bom:32.7.0')
-        implementation 'com.google.firebase:firebase-auth'
-        implementation 'com.google.firebase:firebase-firestore'
-    }
-    buildTypes {
+
+    // 🔥 QO‘SHILDI: Signing konfiguratsiyasi
+    signingConfigs {
+        debug {
+            storeFile file(System.getProperty("user.home") + "/.android/debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            if (keystorePropertiesFile.exists()) {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            } else {
+                // 🔥 MUHIM: Agar JKS bo'lmasa, debug bilan sign qiladi
+                signingConfig = signingConfigs.debug
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig = signingConfigs.debug
+            debuggable = true
+            minifyEnabled = false
+        }
+        release {
+            // 🔥 TUZATILDI: Release uchun release signing config
+            signingConfig = signingConfigs.release
+            minifyEnabled = true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
 
+// 🔥 QO‘SHILDI: Flutter source
 flutter {
     source = "../.."
+}
+
+// 🔥 TUZATILDI: Dependencies to'g'ri joyga qo'yildi
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    
+    // Import the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:34.12.0"))
+    
+    // Firebase services
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-storage'
+    
+    // 🔥 QO‘SHILDI: MultiDex support
+    implementation 'androidx.multidex:multidex:2.0.1'
+    
+    // 🔥 QO‘SHILDI: Biometric/Fingerprint support
+    implementation 'androidx.biometric:biometric:1.1.0'
 }
