@@ -77,6 +77,8 @@ dependencies:
   firebase_storage: ^13.3.0
   flutter_launcher_icons: ^0.14.4
   flutter_native_splash: ^2.4.7
+  path: ^1.9.1
+  http: ^1.6.0
   
 dev_dependencies:
   flutter_test:
