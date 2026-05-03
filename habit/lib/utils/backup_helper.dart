@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -86,14 +87,12 @@ class BackupHelper {
     final response = await driveApi.files.get(
       file.id!,
       downloadOptions: drive.DownloadOptions.fullMedia,
-    );
+    ) as drive.Media;
     
-    if (response is drive.DownloadFullMedia) {
-      final dir = await getTemporaryDirectory();
-      final tempPath = '${dir.path}/temp_restore.db';
-      await File(tempPath).writeAsBytes(response.bytes!);
-      await restoreFromLocal(tempPath);
-    }
+    final dir = await getTemporaryDirectory();
+    final tempPath = '${dir.path}/temp_restore.db';
+    await File(tempPath).writeAsBytes(await response.stream.toList().then((chunks) => Uint8List.fromList(chunks.expand((e) => e).toList())));
+    await restoreFromLocal(tempPath);
   }
 
   static Future<Uint8List> _exportDatabase(Database db) async {

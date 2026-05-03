@@ -21,12 +21,13 @@ class NotificationHelper {
       priority: Priority.high,
     );
     const NotificationDetails details = NotificationDetails(android: androidDetails);
-    await _plugin.schedule(
+    await _plugin.zonedSchedule(
       DateTime.now().millisecondsSinceEpoch.remainder(100000),
       'Habit Reminder',
       'Time to complete: $habitName',
       time,
       details,
+      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
     );
   }
   

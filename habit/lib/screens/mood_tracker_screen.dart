@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import '../bloc/mood_bloc.dart';
 import '../models/mood.dart';
 import '../widgets/mood_selector.dart';
 import '../widgets/activity_chips.dart';
+import 'mood_tags_screen.dart';
+import 'mood_customize_screen.dart';
 
 class MoodTrackerScreen extends StatefulWidget {
   const MoodTrackerScreen({super.key});
@@ -17,12 +19,17 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
   List<String> _selectedActivities = [];
   List<String> _selectedTags = [];
   final TextEditingController _noteController = TextEditingController();
-  DateTime _selectedDate = DateTime.now();
+  late final DateTime _selectedDate;
 
   @override
   void initState() {
     super.initState();
-    context.read<MoodBloc>().add(LoadMoodByDate(_selectedDate));
+    _selectedDate = DateTime.now();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        context.read<MoodBloc>().add(LoadMoodByDate(_selectedDate));
+      }
+    });
   }
 
   @override
@@ -40,6 +47,7 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
       ),
       body: BlocListener<MoodBloc, MoodState>(
         listener: (context, state) {
+          if (!mounted) return;
           if (state is MoodLoaded && state.todayMood != null) {
             setState(() {
               _selectedMood = state.todayMood!.mood;
@@ -49,10 +57,12 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
             });
           }
           if (state is MoodSaved) {
-            Navigator.pop(context);
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Ruh haliniz kaydedildi')),
-            );
+            if (mounted) {
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Ruh haliniz kaydedildi')),
+              );
+            }
           }
         },
         child: SingleChildScrollView(
