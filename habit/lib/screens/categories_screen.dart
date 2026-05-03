@@ -101,6 +101,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
+                  // ignore: deprecated_member_use
                   color: Color(categories[i].color).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -221,6 +222,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
                             height: 50,
                             margin: const EdgeInsets.only(right: 12),
                             decoration: BoxDecoration(
+                              // ignore: deprecated_member_use
                               color: selectedColor.withOpacity(0.1),
                               borderRadius: BorderRadius.circular(12),
                               border: isSelected
@@ -255,12 +257,15 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
                               final newCategory = Category(
                                 name: nameController.text,
                                 icon: selectedIcon,
+                                // ignore: deprecated_member_use
                                 color: selectedColor.value,
                                 type: type,
                               );
                               await DatabaseHelper.instance.insertCategory(newCategory);
                               await _loadCategories();
+                              // ignore: use_build_context_synchronously
                               Navigator.pop(context);
+                              // ignore: use_build_context_synchronously
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(content: Text('Kategori eklendi')),
                               );
@@ -300,7 +305,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
             onPressed: () async {
               await DatabaseHelper.instance.deleteCategory(id);
               await _loadCategories();
+              // ignore: use_build_context_synchronously
               Navigator.pop(context);
+              // ignore: use_build_context_synchronously
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Kategori silindi')),
               );

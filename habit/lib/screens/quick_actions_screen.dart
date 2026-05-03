@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:flutter_bloc/flutter_bloc.dart';
+// ignore: unused_import
 import '../bloc/settings_bloc.dart';
 import '../models/quick_action.dart';
 import '../utils/database_helper.dart';
@@ -31,6 +33,7 @@ class _QuickActionsScreenState extends State<QuickActionsScreen> {
       await DatabaseHelper.instance.updateQuickAction(action);
     }
     setState(() => _hasChanges = false);
+    // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Hızlı işlemler kaydedildi')),
     );

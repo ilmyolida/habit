@@ -6,23 +6,25 @@ class FirebaseService {
   static final FirebaseAuth _auth = FirebaseAuth.instance;
   // ignore: unused_field
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  static final GoogleSignIn _googleSignIn = GoogleSignIn();
+  static final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
 
   static User? get currentUser => _auth.currentUser;
   static bool get isSignedIn => currentUser != null;
 
   static Future<User?> signInWithGoogle() async {
     try {
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      // ignore: unnecessary_nullable_for_final_variable_declarations
+      final GoogleSignInAccount? googleUser = await _googleSignIn.authenticate();
       if (googleUser == null) return null;
-      
+
       // ignore: await_only_futures
       final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      if (googleAuth.idToken == null) return null;
+
       final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-      
+
       final UserCredential userCredential = await _auth.signInWithCredential(credential);
       return userCredential.user;
     } catch (e) {

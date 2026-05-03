@@ -8,9 +8,7 @@ import 'package:http/http.dart' as http;
 import 'database_helper.dart';
 
 class BackupHelper {
-  static final GoogleSignIn _googleSignIn = GoogleSignIn(
-    scopes: [drive.DriveApi.driveFileScope],
-  );
+  static final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
 
   static Future<String> createLocalBackup() async {
     final db = await DatabaseHelper.instance.database;
@@ -33,7 +31,8 @@ class BackupHelper {
 
   static Future<bool> signInToGoogle() async {
     try {
-      final account = await _googleSignIn.signIn();
+      final account = await _googleSignIn.authenticate();
+      // ignore: unnecessary_null_comparison
       return account != null;
     } catch (e) {
       return false;
@@ -50,11 +49,17 @@ class BackupHelper {
   }
 
   static Future<void> syncToGoogleDrive() async {
-    final account = await _googleSignIn.signIn();
-    if (account == null) throw Exception('Not signed in');
-    
-    final auth = await account.authentication;
-    final client = GoogleAuthClient(auth.accessToken!);
+    final account = await _googleSignIn.authenticate();
+
+    final authorization = await account.authorizationClient.authorizeScopes(
+      [drive.DriveApi.driveFileScope],
+    );
+    // ignore: unnecessary_null_comparison
+    if (authorization == null || authorization.accessToken.isEmpty) {
+      throw Exception('Failed to authorize Google Drive access');
+    }
+
+    final client = GoogleAuthClient(authorization.accessToken);
     final driveApi = drive.DriveApi(client);
     
     // Create backup file
@@ -70,11 +75,19 @@ class BackupHelper {
   }
 
   static Future<void> restoreFromGoogleDrive() async {
-    final account = await _googleSignIn.signIn();
+    final account = await _googleSignIn.authenticate();
+    // ignore: unnecessary_null_comparison, dead_code
     if (account == null) throw Exception('Not signed in');
-    
-    final auth = await account.authentication;
-    final client = GoogleAuthClient(auth.accessToken!);
+
+    final authorization = await account.authorizationClient.authorizeScopes(
+      [drive.DriveApi.driveFileScope],
+    );
+    // ignore: unnecessary_null_comparison
+    if (authorization == null || authorization.accessToken.isEmpty) {
+      throw Exception('Failed to authorize Google Drive access');
+    }
+
+    final client = GoogleAuthClient(authorization.accessToken);
     final driveApi = drive.DriveApi(client);
     
     // Find backup file
@@ -132,7 +145,7 @@ class BackupHelper {
   }
 
   static Future<bool> hasGoogleSignedIn() async {
-    final account = await _googleSignIn.signInSilently();
+    final account = await _googleSignIn.attemptLightweightAuthentication();
     return account != null;
   }
 }

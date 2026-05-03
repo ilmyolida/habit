@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../models/mood.dart';
 
 class MoodCustomizeScreen extends StatefulWidget {
   const MoodCustomizeScreen({super.key});

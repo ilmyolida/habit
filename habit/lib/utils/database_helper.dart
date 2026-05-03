@@ -1,4 +1,5 @@
 import 'package:habit/models/category.dart';
+// ignore: duplicate_import
 import 'package:habit/models/category.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';

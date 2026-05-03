@@ -41,8 +41,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _showAddOptionsDialog,
-        child: const Icon(Icons.add),
         backgroundColor: const Color(0xFF2196F3),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(

@@ -20,6 +20,7 @@ class ExpensePieChart extends StatelessWidget {
     final total = categoryTotals.values.fold(0.0, (sum, val) => sum + val);
     
     final List<PieChartSectionData> sections = [];
+    // ignore: unused_local_variable
     int index = 0;
     
     for (var entry in categoryTotals.entries) {
