@@ -79,7 +79,7 @@ class _MoodCustomizeScreenState extends State<MoodCustomizeScreen> {
                         _hasChanges = true;
                       });
                     },
-                    activeColor: const Color(0xFF2196F3),
+                    activeTrackColor: const Color(0xFF2196F3),
                   ),
                   onTap: () => _editMoodName(index),
                 );

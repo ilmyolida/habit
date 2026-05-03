@@ -141,7 +141,7 @@ class _BackupScreenState extends State<BackupScreen> {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          color: isPremium ? Colors.orange.withOpacity(0.1) : const Color(0xFF2196F3).withOpacity(0.1),
+          color: isPremium ? Colors.orange.withValues(alpha: 0.1) : const Color(0xFF2196F3).withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Icon(icon, color: isPremium ? Colors.orange : const Color(0xFF2196F3)),
@@ -152,7 +152,7 @@ class _BackupScreenState extends State<BackupScreen> {
           ? Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: Colors.orange.withOpacity(0.2),
+                color: Colors.orange.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: const Text('Pro', style: TextStyle(color: Colors.orange, fontSize: 10, fontWeight: FontWeight.bold)),
@@ -168,7 +168,7 @@ class _BackupScreenState extends State<BackupScreen> {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(0.1),
+          color: Colors.grey.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Icon(icon, color: Colors.grey[600]),

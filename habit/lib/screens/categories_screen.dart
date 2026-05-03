@@ -101,7 +101,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: Color(categories[i].color).withOpacity(0.1),
+                  color: Color(categories[i].color).withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(
@@ -223,7 +223,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
                             height: 50,
                             margin: const EdgeInsets.only(right: 12),
                             decoration: BoxDecoration(
-                              color: selectedColor.withOpacity(0.1),
+                              color: selectedColor.withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(12),
                               border: isSelected
                                   ? Border.all(color: selectedColor, width: 2)

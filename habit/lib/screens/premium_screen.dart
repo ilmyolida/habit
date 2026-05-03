@@ -37,7 +37,7 @@ class PremiumScreen extends StatelessWidget {
                   const SizedBox(height: 8),
                   Text(
                     'Neden 5 ayrı uygulama için ödeme yapasınız?',
-                    style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 16),
+                    style: TextStyle(color: Colors.white.withValues(alpha: 0.9), fontSize: 16),
                   ),
                   const SizedBox(height: 24),
                   Row(
@@ -68,7 +68,7 @@ class PremiumScreen extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.1),
+                  color: Colors.green.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: const Text(
@@ -210,7 +210,7 @@ class PremiumScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.2),
+        color: Colors.white.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(text, style: const TextStyle(color: Colors.white, fontSize: 12)),
@@ -227,7 +227,7 @@ class PremiumScreen extends StatelessWidget {
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: isPopular ? const Color(0xFF2196F3).withOpacity(0.05) : Colors.white,
+        color: isPopular ? const Color(0xFF2196F3).withValues(alpha: 0.05) : Colors.white,
         borderRadius: BorderRadius.circular(20),
         border: isPopular
             ? Border.all(color: const Color(0xFF2196F3), width: 2)
@@ -264,7 +264,7 @@ class PremiumScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
-                          color: Colors.green.withOpacity(0.1),
+                          color: Colors.green.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(savings, style: const TextStyle(color: Colors.green, fontSize: 12)),

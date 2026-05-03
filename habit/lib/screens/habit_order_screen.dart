@@ -100,7 +100,7 @@ class _HabitOrderScreenState extends State<HabitOrderScreen> {
                                 width: 44,
                                 height: 44,
                                 decoration: BoxDecoration(
-                                  color: Color(_habits[i].color).withOpacity(0.1),
+                                  color: Color(_habits[i].color).withValues(alpha: 0.1),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Icon(

@@ -49,7 +49,7 @@ class _ActivityChipsState extends State<ActivityChips> {
                 widget.onActivitiesChanged?.call(_selectedActivities.toList());
               },
               backgroundColor: Colors.grey[100],
-              selectedColor: const Color(0xFF2196F3).withOpacity(0.2),
+              selectedColor: const Color(0xFF2196F3).withValues(alpha: 0.2),
               checkmarkColor: const Color(0xFF2196F3),
               labelStyle: TextStyle(
                 color: isSelected ? const Color(0xFF2196F3) : Colors.black87,

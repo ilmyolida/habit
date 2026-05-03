@@ -497,7 +497,7 @@ class PremiumBannerSection extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 'Tüm özellikleri aç',
-                style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 14),
+                style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 14),
               ),
             ],
           ),

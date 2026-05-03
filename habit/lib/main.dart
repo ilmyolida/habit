@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';  // 🔥 QO'SHILDI (firebase_options.dart import qilish kerak)
 import 'bloc/habit_bloc.dart';
 import 'bloc/mood_bloc.dart';
 import 'bloc/expense_bloc.dart';
 import 'bloc/settings_bloc.dart';
 import 'bloc/auth_bloc.dart';
 import 'utils/database_helper.dart';
-import 'utils/notification_helper.dart';
 import 'screens/dashboard_screen.dart';
-import 'firebase/firebase_service.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -19,16 +18,12 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
-  // Initialize Firebase
-  await Firebase.initializeApp();
+  // 🔥 FIREBASE INIT - firebase_options.dart ishlatiladi
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   
-  // Initialize database
   await DatabaseHelper.instance.database;
-  
-  // Initialize notifications
-  // await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
-  
-  // Initialize localization
   await EasyLocalization.ensureInitialized();
   
   runApp(

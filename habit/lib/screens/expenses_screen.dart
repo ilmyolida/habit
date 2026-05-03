@@ -168,7 +168,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProvid
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          color: _getCategoryColor(expense.category).withOpacity(0.1),
+          color: _getCategoryColor(expense.category).withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Icon(
@@ -282,7 +282,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProvid
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -312,7 +312,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProvid
             width: 32,
             height: 32,
             decoration: BoxDecoration(
-              color: _getCategoryColor(category).withOpacity(0.1),
+              color: _getCategoryColor(category).withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(
@@ -345,7 +345,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProvid
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Color(category.color).withOpacity(0.1),
+                    color: Color(category.color).withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(
@@ -464,7 +464,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> with SingleTickerProvid
                       Switch(
                         value: isIncome,
                         onChanged: (v) => setState(() => isIncome = v),
-                        activeColor: Colors.green,
+                        activeTrackColor: Colors.green,
                       ),
                     ],
                   ),

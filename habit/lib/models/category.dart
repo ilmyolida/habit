@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Category {
   final int? id;
   final String name;
@@ -34,7 +36,7 @@ class Category {
   }
 }
 
-// Default categories from images
+// Default categories
 List<Category> defaultHabitCategories = [
   Category(name: 'Diger', icon: 'more_horiz', color: 0xFF9E9E9E, type: 'habit'),
   Category(name: 'Saglik', icon: 'favorite', color: 0xFF4CAF50, type: 'habit'),
@@ -53,7 +55,6 @@ List<Category> defaultExpenseCategories = [
   Category(name: 'Diger', icon: 'more_horiz', color: 0xFF9E9E9E, type: 'expense'),
 ];
 
-// Mood activities from images
 List<String> defaultMoodActivities = [
   'Is', 'Egzersiz', 'Aile', 'Arkadaslar', 'Saglik', 'Uyku', 'Stres',
   'Rahatlama', 'Seyahat', 'Hava durumu', 'Okul', 'Diyet', 'Iliskiler',

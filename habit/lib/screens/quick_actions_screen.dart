@@ -96,7 +96,7 @@ class _QuickActionsScreenState extends State<QuickActionsScreen> {
           width: 44,
           height: 44,
           decoration: BoxDecoration(
-            color: action.isEnabled ? const Color(0xFF2196F3).withOpacity(0.1) : Colors.grey[100],
+            color: action.isEnabled ? const Color(0xFF2196F3).withValues(alpha: 0.1) : Colors.grey[100],
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(
@@ -121,7 +121,7 @@ class _QuickActionsScreenState extends State<QuickActionsScreen> {
                   _hasChanges = true;
                 });
               },
-              activeColor: const Color(0xFF2196F3),
+              activeTrackColor: const Color(0xFF2196F3),
             ),
             const SizedBox(width: 8),
             const Icon(Icons.drag_handle, color: Colors.grey),

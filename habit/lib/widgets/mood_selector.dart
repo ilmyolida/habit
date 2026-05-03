@@ -33,7 +33,7 @@ class MoodSelector extends StatelessWidget {
                     height: 56,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: mood.color.withOpacity(isSelected ? 0.2 : 0.1),
+                      color: mood.color.withValues(alpha: isSelected ? 0.2 : 0.1),
                       border: Border.all(
                         color: isSelected ? mood.color : Colors.transparent,
                         width: 2,
