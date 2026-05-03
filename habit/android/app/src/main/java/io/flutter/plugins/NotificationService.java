@@ -1,17 +1,7 @@
-package com.habit.habit;
+package io.flutter.plugins;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.Service;
-import android.content.Intent;
-import android.os.Build;
-import android.os.IBinder;
-import androidx.core.app.NotificationCompat;
-
-public class NotificationService extends Service {
-    private static final String CHANNEL_ID = "habitgenius_channel";
-    private static final int NOTIFICATION_ID = 1001;
+// Old misplaced file preserved only for build compatibility.
+// The real NotificationService implementation now lives in com.habit.habit.
 
     @Override
     public void onCreate() {

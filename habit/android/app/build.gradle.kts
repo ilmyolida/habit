@@ -28,7 +28,7 @@ android {
 
     defaultConfig {
         applicationId = "com.habit.habit"
-        minSdk = 21  // 🔥 TUZATILDI: 21 dan past bo'lmasin
+        minSdk = flutter.minSdkVersion  // 🔥 TUZATILDI: 21 dan past bo'lmasin
         targetSdk = 34
         versionCode = flutter.versionCode
         versionName = flutter.versionName
