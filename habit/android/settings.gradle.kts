@@ -1,18 +1,15 @@
+import java.io.File
 import java.util.Properties
 
-fun properties(file: File): Properties {
-    return Properties().apply {
-        if (file.exists()) {
-            file.inputStream().use { load(it) }
-        }
-    }
-}
-
-val flutterSdkPath = requireNotNull(properties(file("local.properties")).getProperty("flutter.sdk")) {
-    "flutter.sdk not set in local.properties"
-}
-
 pluginManagement {
+    val flutterSdkPath = run {
+        val props = java.util.Properties()
+        val file = java.io.File(rootDir, "local.properties")
+        if (file.exists()) {
+            props.load(file.inputStream())
+        }
+        props.getProperty("flutter.sdk") ?: throw GradleException("flutter.sdk not set in local.properties")
+    }
     repositories {
         google()
         mavenCentral()
