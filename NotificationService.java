@@ -1,6 +1,5 @@
-﻿package io.flutter.plugins;
+package io.flutter.plugins;
 
-// Fixed: rewritten to remove hidden BOM from file start
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -25,7 +24,7 @@ public class NotificationService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("Habit")
+                .setContentTitle("HabitGenius")
                 .setContentText("Your habits are ready for today!")
                 .setSmallIcon(R.drawable.ic_notification)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -39,7 +38,7 @@ public class NotificationService extends Service {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                 CHANNEL_ID,
-                "Habit Notifications",
+                "HabitGenius Notifications",
                 NotificationManager.IMPORTANCE_DEFAULT
             );
             NotificationManager manager = getSystemService(NotificationManager.class);
