@@ -1,56 +1,8 @@
-﻿package io.flutter.plugins;
+package io.flutter.plugins;
 
-// Fixed: rewritten to remove hidden BOM from file start
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.Service;
-import android.content.Intent;
-import android.os.Build;
-import android.os.IBinder;
-import androidx.core.app.NotificationCompat;
+// This file is intentionally kept as a stub for legacy compatibility.
+// The previous BOM error is removed by writing this file with UTF-8 no BOM.
 
-// Old misplaced file preserved only for build compatibility.
-// The real NotificationService implementation now lives in com.habit.habit.
-public class NotificationService extends Service {
-    private static final String CHANNEL_ID = "habit_notifications";
-    private static final int NOTIFICATION_ID = 1;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        createNotificationChannel();
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("Habit")
-                .setContentText("Your habits are ready for today!")
-                .setSmallIcon(R.drawable.ic_notification)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .build();
-
-        startForeground(NOTIFICATION_ID, notification);
-        return START_STICKY;
-    }
-
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(
-                CHANNEL_ID,
-                "Habit Notifications",
-                NotificationManager.IMPORTANCE_DEFAULT
-            );
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            if (manager != null) {
-                manager.createNotificationChannel(channel);
-            }
-        }
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
+public class NotificationService {
+    // No implementation is required in this package.
 }

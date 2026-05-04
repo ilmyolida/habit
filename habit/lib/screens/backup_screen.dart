@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
-// ignore: unused_import
-import 'package:share_plus/share_plus.dart';
 import '../utils/backup_helper.dart';
 
 class BackupScreen extends StatefulWidget {

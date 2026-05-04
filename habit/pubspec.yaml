@@ -52,7 +52,6 @@ dependencies:
   
   # File operations
   file_picker: ^11.0.2
-  share_plus: ^12.0.2
   
   # UI
   reorderables: ^0.6.0
