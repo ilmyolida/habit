@@ -72,7 +72,7 @@ class DatabaseHelper {
       CREATE TABLE mood_tags(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
-        order INTEGER NOT NULL,
+        sort_order INTEGER NOT NULL,
         isActive INTEGER NOT NULL
       )
     ''');
@@ -133,7 +133,7 @@ class DatabaseHelper {
         name TEXT NOT NULL,
         icon TEXT NOT NULL,
         isEnabled INTEGER NOT NULL,
-        order INTEGER NOT NULL
+        sort_order INTEGER NOT NULL
       )
     ''');
 
@@ -281,7 +281,7 @@ class DatabaseHelper {
   // Mood tags operations
   Future<List<MoodTag>> getMoodTags() async {
     final db = await database;
-    final result = await db.query('mood_tags', orderBy: 'order ASC');
+    final result = await db.query('mood_tags', orderBy: 'sort_order ASC');
     return result.map((e) => MoodTag.fromMap(e)).toList();
   }
 
@@ -390,7 +390,7 @@ class DatabaseHelper {
   // Quick actions operations
   Future<List<QuickAction>> getQuickActions() async {
     final db = await database;
-    final result = await db.query('quick_actions', orderBy: 'order ASC');
+    final result = await db.query('quick_actions', orderBy: 'sort_order ASC');
     return result.map((e) => QuickAction.fromMap(e)).toList();
   }
 
